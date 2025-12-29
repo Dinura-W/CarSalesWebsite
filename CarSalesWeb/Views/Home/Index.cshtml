@@ -1,8 +1,38 @@
-﻿@{
+﻿<!-- Holy moly this took me for ever but this pretty much lets index.cshtml know to recieve a list of Car objects from the controller
+I first used the container type then the namespace then the class name for it to work !-->
+@model List<CarSalesWeb.Models.Car>
+
+@{
     ViewData["Title"] = "Home Page";
+   
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+<!--
+okay for the below i pretty much created a loop that goes through each car in the list
+i added a card so the car has its own box and looped some of the info 
+
+-->
+@foreach (var car in Model)
+{
+    <div class="card">
+        <!-- I linked the image by putting the path in the card instead of in the image attribute so i dont have to
+            write the full path each time
+        -->
+        <img src="/Carimages/@car.Image" alt="CAR" style="width:25%" />
+        <div class="card-body">
+                <h1>@car.Manufacturer</h1>
+                <h2>@car.Model</h2>
+                <p>@car.Odometer KMS</p>
+                <p>$@car.Price</p>
+                <p>@car.Year</p>
+                <p>@car.Category</p>
+        </div>
+    </div>
+}
+
+
+

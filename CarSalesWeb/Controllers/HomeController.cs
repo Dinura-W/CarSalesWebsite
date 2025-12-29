@@ -23,7 +23,7 @@ namespace CarSalesWeb.Controllers
                 Price = 20000,
                 Odometer = 100000,
                 Category = "sports",
-                Image = "image"
+                Image = "370z.jpg"
             };
 
             Car car2 = new Car
@@ -36,7 +36,7 @@ namespace CarSalesWeb.Controllers
                 Price = 60000,
                 Odometer = 98000,
                 Category = "sports rally",
-                Image = "image"
+                Image = "evo5.jpg"
             };
 
             Car car3 = new Car
@@ -49,14 +49,14 @@ namespace CarSalesWeb.Controllers
                 Price = 80000,
                 Odometer = 50000,
                 Category = "sports Rally",
-                Image = "image"
+                Image = "wrx.jpg"
             };
-
+            //this is me creating a list to hold the car objects
             var Carlist = new List<Car> { };
             Carlist.Add(car1);
             Carlist.Add(car2);
             Carlist.Add(car3);
-
+            //this returns the list to the view which is picked up by the index cshtml page
             return View(Carlist);
 
         }
