@@ -8,7 +8,9 @@ namespace CarSalesWeb.Controllers
     {
 
         //So this i where i created the objects for the cars to be displayed on the index page.
-        public IActionResult Index()
+
+        //when the search is used in index the it will replace string search with the search term and can be used to filter the list of cars shown
+        public IActionResult Index(string search)
         {
 
             
@@ -52,6 +54,8 @@ namespace CarSalesWeb.Controllers
                 Image = "wrx.jpg"
             };
 
+            //from here onwards i asked chatgpt to add dummy data
+            
             Car car4 = new Car
             {
                 CarID = 4,
@@ -147,10 +151,16 @@ namespace CarSalesWeb.Controllers
                 Category = "Sports Rally",
                 Image = "22b.jpg"
             };
-            //from here onwards i asked chatgpt to add dummy data
 
-            //this is me creating a list to hold the car objects
-            var Carlist = new List<Car> { };
+
+      
+
+
+
+
+
+                //this is me creating a list to hold the car objects
+                var Carlist = new List<Car> { };
             Carlist.Add(car1);
             Carlist.Add(car2);
             Carlist.Add(car3);
@@ -162,8 +172,23 @@ namespace CarSalesWeb.Controllers
             Carlist.Add(car9);
             Carlist.Add(car10);
             Carlist.Add(car11);
+
+
+            var FilteredCars = Carlist;
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                FilteredCars = Carlist.Where(car => 
+                 car.Manufacturer.Contains(search, StringComparison.OrdinalIgnoreCase) ||           
+                 car.Model.Contains(search, StringComparison.OrdinalIgnoreCase) || 
+                 car.Category.Contains(search, StringComparison.OrdinalIgnoreCase)).ToList();
+
+            }
+
+
             //this returns the list to the view which is picked up by the index cshtml page
-            return View(Carlist);
+            return View(FilteredCars);
+
 
         }
 

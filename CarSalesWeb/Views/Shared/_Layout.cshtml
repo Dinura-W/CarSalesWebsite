@@ -26,6 +26,22 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <!--
+                            So this is the search bar below
+                        -->
+                        <li class="nav-item">
+                        <!--
+                            A form lets me user input speak into the server
+                        -->
+                        <!--
+                            asp controller tells it which controller handles the request
+                            Also method get makes the query go into the url
+                        -->
+                            <form asp-controller="Home" method="get">
+                                <!-- the name is the most important thing here as it makes the url have search appear in it-->
+                                <input class="form-control text-dark pull-right" name="search" type="text" placeholder="Search..">
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
