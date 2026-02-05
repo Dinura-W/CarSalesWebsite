@@ -7,10 +7,32 @@ I first used the container type then the namespace then the class name for it to
    
 }
 
-<div class="text-center">
-    <h1 class="display-4">JDMClassics</h1>
-    <p>Buy, Sell and Browse the best japansese cars known to man.</p>
+<div class="text-center my-3">
+    <p class="lead fs-4 text-secondary">Drive your dream car. Buy, sell, and explore <span class="fw-bold">Iconic Japanese Cars</span></p>
 </div>
+<!-- some css-->
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+
+<!--
+    So this is the search bar below
+    A form lets me user input speak into the server
+    asp controller tells it which controller handles the request
+    Also method get makes the query go into the url
+-->
+<form asp-controller="Home" method="get">
+<!-- the name is the most important thing here as it makes the url have search appear in it -->
+<input class="form-control text-dark py-3 shadow-sm" name="search" type="text" placeholder="Search To Find Your Dream Car Today...">
+</form>
+        </div>
+    </div>
+</div>
+
+<div class="mb-3">
+    <p class="lead fs-4 text-secondary">Currently Available</p>
+</div>
+
 <!--
 okay for the below i pretty much created a loop that goes through each car in the list
 i added a card so the car has its own box and looped some of the info 
@@ -20,27 +42,28 @@ i added a card so the car has its own box and looped some of the info
 @foreach (var car in Model)
 {
         
-        <div class="col-md-3 d-flex" class1="display: flex">
-            <div class="card w-100 h-100 d-flex flex-column">
+        <div class="col-md-3 d-flex align-items-stretch">
+            <!-- this makes the whole card clickable and makes it so action hits "Details" action and route to make it the carID-->
+            <!-- the class makes the text dark-->
+            <!-- makes the whole card clickable-->
+            <a asp-action="Details" asp-route-id="@car.CarID" class="text-decoration-none text-dark w-100 h-100 d-block">
+                <div class="card car-card w-100 h-100 d-flex flex-column">
         <!-- I linked the image by putting the path in the card instead of in the image attribute so i dont have to
             write the full path each time
         -->
-        <!-- this makes the whole card clickable and makes it so action hits "Details" action and route to make it the carID-->
-        <!-- the class makes the text dark-->
-        <a asp-action="Details" asp-route-id="@car.CarID" class="text-dark">
-        <img src="/Carimages/@car.Image" alt="CAR" style="width:100%" />
+        
+        
+        <img src="/Carimages/@car.Image" alt="CAR" />
                 <div class="card-body">
-                <h1>@car.Manufacturer</h1>
-                <h2>@car.Model</h2>
-                <h3>$@car.Price</h3>
-                <h4>@car.Odometer KMS</h4>
-                <h5>@car.Year</h5>
-                <h6>@car.Category</h6>
-         
-        </div>
-        </a>
-    </div>
-    </div>
+                <h5 class="mb-1">@car.Manufacturer @car.Model</h5>
+                <p class="mb-1">@car.Year @car.Category</p>
+                <p class="mb-1">@car.Odometer KMS</p>
+                <div class="car-price">$@car.Price</div>                     
+                </div>
+        
+                </div>
+            </a>
+         </div>
     
 }
 </div>

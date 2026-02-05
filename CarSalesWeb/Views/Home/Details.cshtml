@@ -6,16 +6,45 @@
 @{
 }
   <!-- this is just the card that only calls one car use underscore model-->
-<div class="col-md-3 d-flex" class1="display: flex">
-    <div class="card w-100 h-100 d-flex flex-column">     
-        <img src="/Carimages/@Model.Image" alt="CAR" style="width:100%" />
-        <div class="card-body">
-            <h1>@Model.Manufacturer</h1>
-            <h2>@Model.Model</h2>
-            <h3>$@Model.Price</h3>
-            <h4>@Model.Odometer KMS</h4>
-            <h5>@Model.Year</h5>
-            <h6>@Model.Category</h6>
+
+<div class="container my-5">
+    <div class="row g-5 align-items-start">
+
+        <!-- LEFT: IMAGE -->
+        <div class="col-md-6">
+            <div class="card car-detail-card">
+                <img src="/Carimages/@Model.Image" alt="CAR" class="car-detail-image" />
+            </div>
         </div>
+
+        <!-- RIGHT: INFO -->
+        <div class="col-md-6">
+            <div class="car-detail-info">
+
+                <h1 class="car-title">
+                    @Model.Manufacturer @Model.Model
+                </h1>
+
+                <div class="car-detail-price">
+                    $@Model.Price
+                </div>
+
+                <div class="car-meta">
+                    <span>@Model.Year</span>
+                    <span>•</span>
+                    <span>@Model.Category</span>
+                </div>
+
+                <hr />
+
+                <div class="car-specs">
+                    <p><strong>Odometer:</strong> @Model.Odometer KMS</p>
+                    <p><strong>Category:</strong> @Model.Category</p>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 </div>
+

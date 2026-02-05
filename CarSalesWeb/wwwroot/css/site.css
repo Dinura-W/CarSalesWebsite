@@ -29,3 +29,84 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+/* most of this is ai helping with the front end stuff UI*/
+.car-card {
+    border-radius: 16px;
+    overflow: hidden; /* keeps image corners rounded */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+}
+
+.car-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.car-card img {
+        height: 180px;
+        object-fit: cover;
+        width: 100%;
+}
+
+.car-card h5 {
+        font-weight: 600;
+        margin-bottom: 4px;
+}
+
+.car-card p {
+        margin: 0;
+        color: #6c757d;
+        font-size: 0.9rem;
+}
+
+.car-price {
+    font-weight: 700;
+    color: #111;
+    font-size: 1.1rem;
+    margin-top: 8px;
+}
+
+
+
+/* DETAILS PAGE */
+
+.car-detail-card {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+    border: none;
+}
+
+.car-detail-image {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+}
+
+.car-detail-info {
+    padding: 10px;
+}
+
+.car-title {
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.car-detail-price {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #111;
+}
+
+.car-meta {
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.car-specs p {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
