@@ -10,10 +10,11 @@ namespace CarSalesWeb.Controllers
         //So this i where i created the objects for the cars to be displayed on the index page.
 
         //when the search is used in index the it will replace string search with the search term and can be used to filter the list of cars shown
-        public IActionResult Index(string search)
+        //Ive also now added sortOrder so now i can sort the cars, it checks for the parameter in the url from index
+        public IActionResult Index(string search, string sortOrder)
         {
 
-            
+
 
             Car car1 = new Car
             {
@@ -175,7 +176,7 @@ namespace CarSalesWeb.Controllers
 
 
             var FilteredCars = Carlist;
-
+            //this checks what cars contain whats in the search
             if (!string.IsNullOrEmpty(search))
             {
                 FilteredCars = Carlist.Where(car => 
@@ -184,7 +185,33 @@ namespace CarSalesWeb.Controllers
                  car.Category.Contains(search, StringComparison.OrdinalIgnoreCase)).ToList();
 
             }
+            //so this checks the url to see what was clicked on from index.cshtml
+            //the if checks if it is not empty and the switch checks which value was selected
+            //the selected value is picked and the code decides to either order by asc or desc
+            if (!string.IsNullOrEmpty(sortOrder))
+            {
+                switch (sortOrder)
+                {
+                    case "price_asc":
+                        FilteredCars = FilteredCars.OrderBy(car => car.Price).ToList();
+                        break;
 
+                    case "price_desc":
+                        FilteredCars = FilteredCars.OrderByDescending(car => car.Price).ToList();
+                        break;
+
+                    case "year_new":
+                        FilteredCars = FilteredCars.OrderByDescending(car => car.Year).ToList();
+                        break;
+
+                    case "year_old":
+                        FilteredCars = FilteredCars.OrderBy(car => car.Year).ToList();
+                        break;
+                }
+
+            }
+
+            ViewData["CurrentSearch"] = search; // store the search term for the view so the search stays when sortby is selected
 
             //this returns the list to the view which is picked up by the index cshtml page
             return View(FilteredCars);
@@ -209,7 +236,8 @@ namespace CarSalesWeb.Controllers
                 Price = 20000,
                 Odometer = 100000,
                 Category = "Sports",
-                Image = "370z.jpg"
+                Image = "370z.jpg",
+                Description = "TEST CASE"
             };
 
             Car car2 = new Car
@@ -222,7 +250,8 @@ namespace CarSalesWeb.Controllers
                 Price = 60000,
                 Odometer = 98000,
                 Category = "Sports Rally",
-                Image = "evo5.jpg"
+                Image = "evo5.jpg",
+                Description = "TEST CASE"
             };
 
             Car car3 = new Car
@@ -235,7 +264,8 @@ namespace CarSalesWeb.Controllers
                 Price = 80000,
                 Odometer = 50000,
                 Category = "Sports Rally",
-                Image = "wrx.jpg"
+                Image = "wrx.jpg",
+                Description = "TEST CASE"
             };
 
             //from here onwards i asked chatgpt to add dummy data
@@ -249,7 +279,8 @@ namespace CarSalesWeb.Controllers
                 Price = 150000,
                 Odometer = 70000,
                 Category = "Sports",
-                Image = "supra_mk4.jpg"
+                Image = "supra_mk4.jpg",
+                Description = "TEST CASE"
             };
 
             Car car5 = new Car
@@ -261,7 +292,8 @@ namespace CarSalesWeb.Controllers
                 Price = 120000,
                 Odometer = 85000,
                 Category = "Sports",
-                Image = "rx7_fd.jpg"
+                Image = "rx7_fd.jpg",
+                Description = "TEST CASE"
             };
 
             Car car6 = new Car
@@ -273,7 +305,8 @@ namespace CarSalesWeb.Controllers
                 Price = 180000,
                 Odometer = 60000,
                 Category = "Sports",
-                Image = "r34.jpg"
+                Image = "r34.jpg",
+                Description = "TEST CASE"
             };
 
             Car car7 = new Car
@@ -285,7 +318,8 @@ namespace CarSalesWeb.Controllers
                 Price = 140000,
                 Odometer = 90000,
                 Category = "Sports",
-                Image = "nsx.jpg"
+                Image = "nsx.jpg",
+                Description = "TEST CASE"
             };
 
             Car car8 = new Car
@@ -297,7 +331,8 @@ namespace CarSalesWeb.Controllers
                 Price = 55000,
                 Odometer = 120000,
                 Category = "Sports Drift",
-                Image = "s15.jpg"
+                Image = "s15.jpg",
+                Description = "TEST CASE"
             };
 
             Car car9 = new Car
@@ -309,7 +344,8 @@ namespace CarSalesWeb.Controllers
                 Price = 65000,
                 Odometer = 140000,
                 Category = "Classic Drift",
-                Image = "ae86.jpg"
+                Image = "ae86.jpg",
+                Description = "TEST CASE"
             };
 
             Car car10 = new Car
@@ -321,7 +357,8 @@ namespace CarSalesWeb.Controllers
                 Price = 45000,
                 Odometer = 110000,
                 Category = "Sports",
-                Image = "3000gt.jpg"
+                Image = "3000gt.jpg",
+                Description = "TEST CASE"
             };
 
             Car car11 = new Car
@@ -333,7 +370,8 @@ namespace CarSalesWeb.Controllers
                 Price = 300000,
                 Odometer = 40000,
                 Category = "Sports Rally",
-                Image = "22b.jpg"
+                Image = "22b.jpg",
+                Description = "TEST CASE"
             };
 
 

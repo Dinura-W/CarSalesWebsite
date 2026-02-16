@@ -22,16 +22,38 @@ I first used the container type then the namespace then the class name for it to
     Also method get makes the query go into the url
 -->
 <form asp-controller="Home" method="get">
-<!-- the name is the most important thing here as it makes the url have search appear in it -->
-<input class="form-control text-dark py-3 shadow-sm" name="search" type="text" placeholder="Search To Find Your Dream Car Today...">
+<!-- the name is the most important thing here as it makes the url have search appear in it -->                                <!-- this value keeps the search so when sortby is selected the search stays-->
+<input class="form-control text-dark py-3 shadow-sm mb-3" name="search" type="text" placeholder="Search To Find Your Dream Car Today..." value="@(ViewData["CurrentSearch"] ?? "")">
+
+<!-- so below ive added a dropdown list that orders the list of cars with any of the options below -->
+<!-- when clicked it adds any of the values into the url and puts it into the parameter in the home controller next to the search-->
+<div class="d-flex justify-content-end gap-2">
+  <select name="sortOrder" class="form-select">
+    <option value="">Sort by</option>
+    <option value="price_asc">Price: Low → High</option>
+    <option value="price_desc">Price: High → Low</option>
+    <option value="year_new">Year: New → Old</option>
+    <option value="year_old">Year: Old → New</option>
+  </select>
+  <button type="submit" class="btn btn-primary">Apply</button>
+</div>
+
+
 </form>
+
+
         </div>
     </div>
 </div>
 
+
+
+
+
 <div class="mb-3">
     <p class="lead fs-4 text-secondary">Currently Available</p>
 </div>
+
 
 <!--
 okay for the below i pretty much created a loop that goes through each car in the list

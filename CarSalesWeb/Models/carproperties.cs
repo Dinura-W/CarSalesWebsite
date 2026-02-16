@@ -24,5 +24,6 @@ namespace CarSalesWeb.Models
         public int Odometer { get; set; }
         public string Category { get; set; }
         public string Image { get; set; }
+        public string Description { get; set; }
     }
 }
