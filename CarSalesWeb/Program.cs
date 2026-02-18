@@ -8,10 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 //bunch of code to connect to the database, using the connection string from appsettings.json and using the CarDbContext class to interact
 //Whenever someone asks for a CarDbContext, here’s how to give it to them
 builder.Services.AddDbContext<CarDbContext>(options =>
-//this tells ef core that we are using mysql
-    options.UseMySql(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")
     ));
 
 // Add services to the container.
