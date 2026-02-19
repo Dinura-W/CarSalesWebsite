@@ -7,44 +7,70 @@ I first used the container type then the namespace then the class name for it to
    
 }
 
-<div class="text-center my-3">
-    <p class="lead fs-4 text-secondary">Drive your dream car. Buy, sell, and explore <span class="fw-bold">Iconic Japanese Cars</span></p>
-</div>
-<!-- some css-->
-<div class="container my-4">
-    <div class="row">
-        <div class="col-md-6 mx-auto">
+<div class="hero-video-container">
+    <video autoplay muted loop class="hero-video">
+        <source src="/video/HomeVid.mp4" type="video/mp4" />
+    </video>
 
-<!--
-    So this is the search bar below
-    A form lets me user input speak into the server
-    asp controller tells it which controller handles the request
-    Also method get makes the query go into the url
--->
-<form asp-controller="Home" method="get">
-<!-- the name is the most important thing here as it makes the url have search appear in it -->                                <!-- this value keeps the search so when sortby is selected the search stays-->
-<input class="form-control text-dark py-3 shadow-sm mb-3" name="search" type="text" placeholder="Search To Find Your Dream Car Today..." value="@(ViewData["CurrentSearch"] ?? "")">
+    <div class="hero-overlay">
+     
+        
 
-<!-- so below ive added a dropdown list that orders the list of cars with any of the options below -->
-<!-- when clicked it adds any of the values into the url and puts it into the parameter in the home controller next to the search-->
-<div class="d-flex justify-content-end gap-2">
-  <select name="sortOrder" class="form-select">
-    <option value="">Sort by</option>
-    <option value="price_asc">Price: Low → High</option>
-    <option value="price_desc">Price: High → Low</option>
-    <option value="year_new">Year: New → Old</option>
-    <option value="year_old">Year: Old → New</option>
-  </select>
-  <button type="submit" class="btn btn-primary">Apply</button>
-</div>
-
-
-</form>
-
-
+        <div class="text-center my-3">
+            <p class="lead fs-4 text-white">Drive your dream car. Buy, sell, and explore <span class="fw-bold">Iconic Japanese Cars</span></p>
         </div>
+        <!-- some css-->
+        
+                <div class="col-md-6 mx-auto">
+                
+                    <!--
+                        So this is the search bar below
+                        A form lets me user input speak into the server
+                        asp controller tells it which controller handles the request
+                        Also method get makes the query go into the url
+                    -->
+                    <form asp-controller="Home" method="get">
+                        <!-- the name is the most important thing here as it makes the url have search appear in it -->                                <!-- this value keeps the search so when sortby is selected the search stays-->
+                        <input class="form-control text-dark py-3 shadow-sm mb-3" name="search" type="text" placeholder="Search To Find Your Dream Car Today..." value="@(ViewData["CurrentSearch"] ?? "")">
+
+              
+
+
+                    </form>
+
+
+                </div>
+            
     </div>
 </div>
+
+        <div class="container my-4">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <form asp-controller="Home" method="get">
+                        <!-- so below ive added a dropdown list that orders the list of cars with any of the options below -->
+                        <!-- when clicked it adds any of the values into the url and puts it into the parameter in the home controller next to the search-->
+                            <div class="d-flex justify-content-end gap-2">
+                                <select name="sortOrder" class="form-select">
+                                    <option value="">Sort by</option>
+                                    <option value="price_asc">Price: Low → High</option>
+                                    <option value="price_desc">Price: High → Low</option>
+                                    <option value="year_new">Year: New → Old</option>
+                                    <option value="year_old">Year: Old → New</option>
+                                </select>
+                                <button type="submit" class="btn btn-primary">Apply</button>
+                            </div>
+                    </form>
+        </div>
+            </div>
+                </div>
+
+
+
+
+
+
+
 
 
 
@@ -88,6 +114,8 @@ i added a card so the car has its own box and looped some of the info
          </div>
     
 }
+
+    
 </div>
 
 
