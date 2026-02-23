@@ -4,78 +4,98 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<div class="container my-5">
+    <div class="create-car-card mx-auto">
 
-<h4>Car</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+        <div class="create-header text-center mb-4">
+            <h2>List Your Car</h2>
+            <p class="text-muted">Add your vehicle to the marketplace</p>
+        </div>
+
         <form asp-action="Create" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Manufacturer" class="control-label"></label>
-                <input asp-for="Manufacturer" class="form-control" />
-                <span asp-validation-for="Manufacturer" class="text-danger"></span>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Manufacturer" class="form-label"></label>
+                    <input asp-for="Manufacturer" class="form-control form-control-lg" />
+                    <span asp-validation-for="Manufacturer" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Model" class="form-label"></label>
+                    <input asp-for="Model" class="form-control form-control-lg" />
+                    <span asp-validation-for="Model" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label asp-for="Year" class="form-label"></label>
+                    <input asp-for="Year" class="form-control form-control-lg" type="number" min="1880" max="2030" />
+                    <span asp-validation-for="Year" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label asp-for="Price" class="form-label"></label>
+                    <input asp-for="Price" class="form-control form-control-lg" type="number" min="0" max="1000000000" />
+                    <span asp-validation-for="Price" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label asp-for="Odometer" class="form-label"></label>
+                    <input asp-for="Odometer" class="form-control form-control-lg" type="number" min="0" max="1000000000" />
+                    <span asp-validation-for="Odometer" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Category" class="form-label"></label>
+                    <select asp-for="Category" class="form-select form-select-lg">
+                        <option value="">-- Select Category --</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="SUV">SUV</option>
+                        <option value="UTE">UTE</option>
+                        <option value="Hatchback">Hatchback</option>
+                        <option value="Sport">Sport</option>
+                        <option value="Pickup">Pickup</option>
+                        <option value="Van">Van</option>
+                        <option value="Wagon">Wagon</option>
+                        <option value="Convertible">Convertible</option>
+                        <option value="Off-road">Off-road</option>
+                        <option value="Muscle">Muscle</option>
+                    </select>
+                    <span asp-validation-for="Category" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Image" class="form-label">Car Image</label>
+                    <input type="file" name="CarImage" class="form-control form-control-lg" accept=".jpg, .jpeg, .png" />
+                    <small class="text-muted">JPG, JPEG or PNG only</small>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <label asp-for="Description" class="form-label"></label>
+                    <textarea asp-for="Description" class="form-control form-control-lg" rows="6"></textarea>
+                    <span asp-validation-for="Description" class="text-danger small"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Model" class="control-label"></label>
-                <input asp-for="Model" class="form-control" />
-                <span asp-validation-for="Model" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Year" class="control-label"></label>
-                <input asp-for="Year" class="form-control" type="number" min="1880" max="2030"/>
-                <span asp-validation-for="Year" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" type="number" min="0" max="1000000000" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Odometer" class="control-label"></label>
-                <input asp-for="Odometer" class="form-control" type="number" min="0" max="1000000000" />
-                <span asp-validation-for="Odometer" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <select asp-for="Category" class="form-control">
-                    <option value="">-- Select Category --</option>
-                    <option value="Sedan">Sedan</option>
-                    <option value="SUV">SUV</option>
-                    <option value="UTE">UTE</option>
-                    <option value="Hatchback">Hatchback</option>
-                    <option value="Sport">Sport</option>
-                    <option value="Pickup">Pickup</option>
-                    <option value="Van">Van</option>
-                    <option value="Wagon">Wagon</option>
-                    <option value="Convertible">Convertible</option>
-                    <option value="Off-road">Off-road</option>
-                    <option value="Muscle">Muscle</option>
-                </select>
-                <span asp-validation-for="Category" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input type="file" name="CarImage" class="form-control" accept=".jpg, .jpeg, .png" />
-                <small class="form-text text-muted">JPG, JPEG or PNG only</small>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <textarea asp-for="Description" class="form-control" rows="8"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+
+            <button type="submit" class="btn btn-dark btn-lg w-100 create-btn">
+                List My Car
+            </button>
+
         </form>
+
+        <div class="text-center mt-4">
+            <a asp-action="Index" asp-controller="Home" class="back-link">
+                ← Back to Marketplace
+            </a>
+        </div>
+
     </div>
 </div>
 
-<div>
-    <a asp-action="Index" asp-controller="Home">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

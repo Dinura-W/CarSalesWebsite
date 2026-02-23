@@ -196,4 +196,61 @@ body {
     z-index: 1;
 }
 
+/* CREATE PAGE */
 
+.create-car-card {
+    max-width: 900px;
+    background: #ffffff;
+    padding: 45px;
+    border-radius: 20px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+}
+
+.create-header h2 {
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.create-car-card label {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.create-car-card .form-control,
+.create-car-card .form-select,
+.create-car-card textarea {
+    border-radius: 14px;
+    padding: 14px;
+    border: 1px solid #e5e5e5;
+    transition: all 0.2s ease;
+}
+
+    .create-car-card .form-control:focus,
+    .create-car-card .form-select:focus,
+    .create-car-card textarea:focus {
+        border-color: #111;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+    }
+
+.create-btn {
+    padding: 16px;
+    font-weight: 600;
+    border-radius: 14px;
+    transition: all 0.2s ease;
+}
+
+    .create-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+    }
+
+.back-link {
+    text-decoration: none;
+    font-weight: 500;
+    color: #111;
+    transition: opacity 0.2s ease;
+}
+
+    .back-link:hover {
+        opacity: 0.6;
+    }
