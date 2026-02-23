@@ -34,10 +34,17 @@ if (!context.Cars.Any())
     // STEP: create a few car objects
     var car1 = new Car {Manufacturer = "Nissan", Model = "370z", Year = 2010, Price = 20000, Odometer = 100000, Category = "Sports", Image = "370z.jpg", Description = "TEST CASE1" };
     var car2 = new Car {Manufacturer = "Mitsubishi", Model = "Evo V", Year = 1999, Price = 60000, Odometer = 98000, Category = "Sports Rally", Image = "evo5.jpg", Description = "TEST CASE2" };
+    var car3 = new Car {Manufacturer = "Subaru", Model = "Impreza WRX STI",Year = 2001, Price = 80000, Odometer = 50000, Category = "Sports Rally", Image = "wrx.jpg", Description = "TEST CASE2" };
+    var car4 = new Car {Manufacturer = "Toyota", Model = "Supra MK4", Year = 1998, Price = 150000, Odometer = 70000, Category = "Sports", Image = "supra_mk4.jpg", Description = "TEST CASE2" };
+    var car5 = new Car {Manufacturer = "Mazda", Model = "RX-7 FD", Year = 1997, Price = 120000, Odometer = 85000, Category = "Sports", Image = "rx7_fd.jpg", Description = "TEST CASE2" };
 
 
     context.Cars.Add(car1);
     context.Cars.Add(car2);
+    context.Cars.Add(car3);
+    context.Cars.Add(car4);
+    context.Cars.Add(car5);
+
 
     try
     {

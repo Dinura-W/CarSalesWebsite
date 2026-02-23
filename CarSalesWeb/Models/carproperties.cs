@@ -23,7 +23,7 @@ namespace CarSalesWeb.Models
         public int Price { get; set; }
         public int Odometer { get; set; }
         public string Category { get; set; } = null!;
-        public string Image { get; set; } = null!;
+        public string? Image { get; set; }
         public string Description { get; set; } = null!;
     }
 }

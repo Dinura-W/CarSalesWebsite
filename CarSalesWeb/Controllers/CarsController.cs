@@ -19,29 +19,7 @@ namespace CarSalesWeb.Controllers
             _context = context;
         }
 
-        // GET: Cars
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Cars.ToListAsync());
-        }
-
-        // GET: Cars/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var car = await _context.Cars
-                .FirstOrDefaultAsync(m => m.CarID == id);
-            if (car == null)
-            {
-                return NotFound();
-            }
-
-            return View(car);
-        }
+      
 
         // GET: Cars/Create
         public IActionResult Create()
@@ -54,16 +32,43 @@ namespace CarSalesWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CarID,Manufacturer,Model,Year,Price,Odometer,Category,Image,Description")] Car car)
+
+
+        public async Task<IActionResult> Create([Bind("CarID,Manufacturer,Model,Year,Price,Odometer,Category,Image,Description")] Car car, IFormFile CarImage)
         {
+
+            //this is to upload images
             if (ModelState.IsValid)
             {
+                //checks if empty
+                if (CarImage != null && CarImage.Length > 0)
+                {
+                    //gets the file name
+                    var fileName = Path.GetFileName(CarImage.FileName);
+                    //saves the file path to carimages
+                    var savePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Carimages", fileName);
+                    //Open a file stream at that save path ready to write to it
+                    using (var stream = new FileStream(savePath, FileMode.Create))
+                    {
+                        //saves the file name
+                        await CarImage.CopyToAsync(stream);
+                    }
+                    // stores this filename into the database
+                    car.Image = fileName;
+                }
+                //data is saved and user sent back to index page
                 _context.Add(car);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
+
+
             return View(car);
+
+
         }
+
+
 
         // GET: Cars/Edit/5
         public async Task<IActionResult> Edit(int? id)
